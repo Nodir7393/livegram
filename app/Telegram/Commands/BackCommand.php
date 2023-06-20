@@ -7,13 +7,13 @@ use SergiX44\Nutgram\Nutgram;
 use SergiX44\Nutgram\Telegram\Types\Keyboard\InlineKeyboardButton;
 use SergiX44\Nutgram\Telegram\Types\Keyboard\InlineKeyboardMarkup;
 
-class AddbotCommand
+class BackCommand
 {
     public function __invoke(Nutgram $bot):void
     {
         $bot->sendMessage(text: $this->getMessage(),
             reply_markup: InlineKeyboardMarkup::make()->addRow(
-                InlineKeyboardButton::make('« Back', callback_data: BackCommand::class),
+                InlineKeyboardButton::make('« Back', callback_data: 'type:back'),
             ));
     }
 

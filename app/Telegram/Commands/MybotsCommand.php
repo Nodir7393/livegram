@@ -10,17 +10,31 @@ class MybotsCommand
 {
     public function __invoke(Nutgram $bot)
     {
-        try {
-            $bot->endConversation();
+        $bot->sendMessage(
+            text: $this->getMessage(),
+            reply_markup: $newVehicle->getBaseType());
 
-            $bot->sendMessage('Removing keyboard...', [
-                'reply_markup' => ReplyKeyboardRemove::make(true),
-            ])?->delete();
+//        try {
+//            $bot->endConversation();
+//
+//            $bot->sendMessage('Removing keyboard...', [
+//                'reply_markup' => ReplyKeyboardRemove::make(true),
+//            ])?->delete();
+//
+//        } catch (Throwable) {
+//
+//        }
+//        stats('cancel', 'command');
+    }
 
-        } catch (Throwable) {
 
-        }
+    private function getMessage(): string
+    {
+        return "To connect a bot, you should follow these two steps:
 
-        stats('cancel', 'command');
+1. Open @BotFather and create a new bot (http://telegra.ph/Create-Bot-Livegram-FAQ-03-29).
+2. You'll get a token (e.g. 12345:6789ABCDEF) — just forward or copy-paste it to this chat.
+
+    Warning! Don't connect bots already used by other services like Chatfuel, Manybot, ect.";
     }
 }
