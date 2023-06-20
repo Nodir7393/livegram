@@ -10,8 +10,6 @@ use App\Telegram\Commands\StartCommand;
 use SergiX44\Nutgram\Nutgram;
 use SergiX44\Nutgram\Telegram\Types\Command\BotCommandScopeAllPrivateChats;
 
-//$bot->setRunningMode(Polling::class);
-
 $bot->onCommand('start', StartCommand::class)
     ->description('The start command!');
 
