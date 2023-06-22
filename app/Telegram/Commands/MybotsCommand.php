@@ -8,23 +8,9 @@ use Throwable;
 
 class MybotsCommand
 {
-    public function __invoke(Nutgram $bot)
+    public function __invoke(Nutgram $bot): void
     {
-        $bot->sendMessage(
-            text: $this->getMessage(),
-            reply_markup: $newVehicle->getBaseType());
-
-//        try {
-//            $bot->endConversation();
-//
-//            $bot->sendMessage('Removing keyboard...', [
-//                'reply_markup' => ReplyKeyboardRemove::make(true),
-//            ])?->delete();
-//
-//        } catch (Throwable) {
-//
-//        }
-//        stats('cancel', 'command');
+        $bot->sendMessage(text: $this->getMessage());
     }
 
 

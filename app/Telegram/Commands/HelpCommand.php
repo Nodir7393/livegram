@@ -3,14 +3,14 @@
 namespace App\Telegram\Commands;
 
 use App\Telegram\Design\Button\Director;
-use App\Telegram\Design\Button\InlineKeyboardBuilder;
+use App\Telegram\Design\Button\StartKeyboardBuilder;
 use SergiX44\Nutgram\Nutgram;
 
 class HelpCommand
 {
     public function __invoke(Nutgram $bot): void
     {
-        $newVehicle = (new Director())->build(new InlineKeyboardBuilder());
+        $newVehicle = (new Director())->build(new StartKeyboardBuilder());
         $bot->sendMessage(text: $this->getMessage(), reply_markup: $newVehicle->getBaseType());
     }
 

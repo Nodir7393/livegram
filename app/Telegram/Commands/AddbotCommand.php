@@ -3,18 +3,17 @@
 
 namespace App\Telegram\Commands;
 
+use App\Telegram\Design\Button\AddBotKeyboardBuilder;
+use App\Telegram\Design\Button\Director;
 use SergiX44\Nutgram\Nutgram;
-use SergiX44\Nutgram\Telegram\Types\Keyboard\InlineKeyboardButton;
-use SergiX44\Nutgram\Telegram\Types\Keyboard\InlineKeyboardMarkup;
 
 class AddbotCommand
 {
     public function __invoke(Nutgram $bot):void
     {
-        $bot->sendMessage(text: $this->getMessage(),
-            reply_markup: InlineKeyboardMarkup::make()->addRow(
-                InlineKeyboardButton::make('« Back', callback_data: BackCommand::class),
-            ));
+        $bot->message()->delete();
+        $addBotKeyboard = (new Director())->build(new AddBotKeyboardBuilder());
+        $bot->sendMessage(text: $this->getMessage(), reply_markup: $addBotKeyboard->getBaseType());
     }
 
     private function getMessage(): string

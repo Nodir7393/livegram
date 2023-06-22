@@ -2,12 +2,6 @@
 
 namespace App\Telegram\Design\Button;
 
-use App\Telegram\Commands\AddbotCommand;
-use App\Telegram\Commands\AdsCommand;
-use App\Telegram\Commands\BackCommand;
-use App\Telegram\Commands\BotProCommand;
-use App\Telegram\Commands\HelpCommand;
-use App\Telegram\Commands\MybotsCommand;
 use SergiX44\Nutgram\Telegram\Types\BaseType;
 
 readonly class Buttons
@@ -16,36 +10,36 @@ readonly class Buttons
 
     public function addBot(): BaseType
     {
-        return $this->execute('Add Bot', AddbotCommand::class);
+        return $this->execute('Add Bot', 'type:addBot');
     }
 
     public function myBots(): BaseType
     {
-        return $this->execute('My Bots', MybotsCommand::class);
+        return $this->execute('My Bots', 'type:myBots');
     }
 
     public function help(): BaseType
     {
-        return $this->execute('Help', HelpCommand::class);
+        return $this->execute('Help', 'type:help');
     }
 
     public function ads(): BaseType
     {
-        return $this->execute('Ads', AdsCommand::class);
+        return $this->execute('Ads', 'type:ads');
     }
 
     public function botPro(): BaseType
     {
-        return $this->execute('Bot Pro', BotProCommand::class);
+        return $this->execute('Livegram Pro', 'type:botPro');
     }
 
     public function back(): BaseType
     {
-        return $this->execute('« Back', BackCommand::class);
+        return $this->execute('« Back', 'type:back');
     }
 
-    private function execute($text, $obj): BaseType
+    private function execute($text, $callback_data): BaseType
     {
-        return $this->keyboardButton::make($text, callback_data: $obj);
+        return $this->keyboardButton::make($text, callback_data: $callback_data);
     }
 }
