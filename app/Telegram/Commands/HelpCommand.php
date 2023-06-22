@@ -1,6 +1,5 @@
 <?php
 
-
 namespace App\Telegram\Commands;
 
 use App\Telegram\Design\Button\Director;
@@ -9,10 +8,9 @@ use SergiX44\Nutgram\Nutgram;
 
 class HelpCommand
 {
-    public function __invoke(Nutgram $bot):void
+    public function __invoke(Nutgram $bot): void
     {
-        $inKey = new InlineKeyboardBuilder();
-        $newVehicle = (new Director())->build($inKey);
+        $newVehicle = (new Director())->build(new InlineKeyboardBuilder());
         $bot->sendMessage(text: $this->getMessage(), reply_markup: $newVehicle->getBaseType());
     }
 
