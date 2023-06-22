@@ -9,7 +9,6 @@ use App\Telegram\Commands\BotProCommand;
 use App\Telegram\Commands\FeedbackCommand;
 use App\Telegram\Commands\HelpCommand;
 use App\Telegram\Commands\MybotsCommand;
-use App\Telegram\Commands\SaveToken;
 use App\Telegram\Commands\StartCommand;
 use SergiX44\Nutgram\Nutgram;
 use SergiX44\Nutgram\Telegram\Types\Command\BotCommandScopeAllPrivateChats;
@@ -43,4 +42,4 @@ $bot->onCallbackQueryData('type:botPro', BotProCommand::class);
 $bot->onCallbackQueryData('type:back', BackCommand::class);
 
 $bot->registerMyCommands();
-$bot->run();
+//$bot->run();
