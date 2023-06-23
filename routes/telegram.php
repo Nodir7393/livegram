@@ -42,4 +42,4 @@ $bot->onCallbackQueryData('type:botPro', BotProCommand::class);
 $bot->onCallbackQueryData('type:back', BackCommand::class);
 
 $bot->registerMyCommands();
-//$bot->run();
+$bot->run();
